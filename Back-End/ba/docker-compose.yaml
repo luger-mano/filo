@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:9.2.0
+    container_name: mysql-retalho
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: steve3571
+      MYSQL_DATABASE: retalho_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - retalho-net
+    healthcheck: # Adicionado na sugestão anterior, mantenha se quiser
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-psteve3571"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: .
+    container_name: retalho
+    ports:
+      - "8080:8080"
+    environment:
+      # *** Mude esta linha ***
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-retalho:3306/retalho_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: steve3571
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQL8Dialect
+    depends_on:
+      mysql:
+        condition: service_healthy # Mantenha se adicionou o healthcheck
+    networks:
+      - retalho-net
+
+volumes:
+  mysql-data:
+
+networks:
+  retalho-net:
+    driver: bridge
