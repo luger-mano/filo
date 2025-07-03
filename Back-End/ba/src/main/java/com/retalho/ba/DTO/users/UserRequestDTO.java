@@ -1,5 +1,6 @@
 package com.retalho.ba.DTO.users;
 
+import com.retalho.ba.models.UserType;
 import lombok.Data;
 
 import java.util.Date;
@@ -16,5 +17,5 @@ public class UserRequestDTO {
     private String cpf;
     private String phone;
     private Date birth;
-    private Boolean isArtist;
+    private UserType userType;
 }

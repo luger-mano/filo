@@ -9,7 +9,9 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 
+    @Mapping(source = "userType", target = "userType")
     User userRequestDTOtoUser(UserRequestDTO userRequestDTO);
 
+    @Mapping(source = "userType", target = "userType")
     UserResponseDTO userToUserResponseDTO(User user);
 }

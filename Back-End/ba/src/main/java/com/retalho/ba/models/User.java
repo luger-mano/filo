@@ -31,5 +31,6 @@ public class User implements Serializable {
     private String cpf;
     private String phone;
     private Date birth;
-    private Boolean isArtist = false;
+    @Enumerated(EnumType.STRING)
+    private UserType userType;
 }

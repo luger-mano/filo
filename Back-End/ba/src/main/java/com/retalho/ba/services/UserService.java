@@ -69,7 +69,7 @@ public class UserService {
         List<User> users = userRepository.findAll();
 
         return users.stream()
-                .filter(c -> c.getIsArtist() == true)
+                .filter(c -> c.getUserType().equals(getArtists()))
                 .map(userMapper::userToUserResponseDTO)
                 .toList();
     }

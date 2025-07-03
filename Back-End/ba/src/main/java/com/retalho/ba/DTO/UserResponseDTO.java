@@ -1,5 +1,6 @@
 package com.retalho.ba.DTO;
 
+import com.retalho.ba.models.UserType;
 import lombok.Data;
 
 import java.util.UUID;
@@ -10,4 +11,5 @@ public class UserResponseDTO {
     private String name;
     private String email;
     private String phone;
+    private UserType userType;
 }
