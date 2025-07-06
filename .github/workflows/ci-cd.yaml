@@ -37,9 +37,11 @@ jobs:
 
       - name: Rodar testes com Maven
         run: mvn clear verify
+        working-directory: ./Back-End/ba
 
       - name: Build da imagem Docker
         run: docker compose up -d
+        working-directory: ./Back-End/ba
 
       - name: Aguardar serviços
         run: sleep 30
@@ -50,3 +52,4 @@ jobs:
       - name: Encerrar containers
         if: always()
         run: docker compose down
+        working-directory: ./Back-End/ba
