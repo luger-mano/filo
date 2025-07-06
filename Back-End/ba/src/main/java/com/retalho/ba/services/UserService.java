@@ -1,12 +1,11 @@
 package com.retalho.ba.services;
 
 import com.retalho.ba.DTO.users.UserRequestDTO;
-import com.retalho.ba.DTO.UserResponseDTO;
+import com.retalho.ba.DTO.users.UserResponseDTO;
 import com.retalho.ba.mappers.UserMapper;
 import com.retalho.ba.models.User;
 import com.retalho.ba.repositories.UserRepository;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
@@ -27,8 +26,12 @@ public class UserService {
     }
 
     @Transactional
-    public UserResponseDTO saveUser(UserRequestDTO userRequestDTO) {
-        User userSave = userMapper.userRequestDTOtoUser(userRequestDTO);
+    public UserResponseDTO saveUser(UserRequestDTO request) {
+        if(this.userRepository.existsByEmail(request.getEmail())){
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Email already exists.");
+        }
+
+        User userSave = userMapper.userRequestDTOtoUser(request);
         userRepository.save(userSave);
 
         return userMapper.userToUserResponseDTO(userSave);

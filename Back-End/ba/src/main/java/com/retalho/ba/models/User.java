@@ -1,19 +1,25 @@
 package com.retalho.ba.models;
 
 
+import com.retalho.ba.DTO.users.UserRequestDTO;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
 @Entity
 @Data
-@Table(name = "TABLE_USERS")
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "table_users")
 public class User implements Serializable {
 
     @Serial
@@ -30,7 +36,19 @@ public class User implements Serializable {
     private String password;
     private String cpf;
     private String phone;
-    private Date birth;
+    private LocalDate birth;
     @Enumerated(EnumType.STRING)
     private UserType userType;
+
+    public User(UserRequestDTO user){
+        this.name = user.getName();
+        this.middleName = user.getMiddleName();
+        this.email = user.getEmail();
+        this.password = user.getPassword();
+        this.cpf = user.getCpf();
+        this.phone = user.getPhone();
+        this.birth = user.getBirth();
+        this.userType = user.getUserType();
+    }
+
 }

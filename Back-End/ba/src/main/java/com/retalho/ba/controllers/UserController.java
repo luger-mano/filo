@@ -1,10 +1,9 @@
 package com.retalho.ba.controllers;
 
 import com.retalho.ba.DTO.users.UserRequestDTO;
-import com.retalho.ba.DTO.UserResponseDTO;
+import com.retalho.ba.DTO.users.UserResponseDTO;
 import com.retalho.ba.services.UserService;
 import jakarta.validation.Valid;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
