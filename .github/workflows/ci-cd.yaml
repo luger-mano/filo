@@ -39,7 +39,7 @@ jobs:
         run: mvn clear verify
 
       - name: Build da imagem Docker
-        run: docker-compose up -d
+        run: docker compose up -d
 
       - name: Aguardar serviços
         run: sleep 30
@@ -49,4 +49,4 @@ jobs:
 
       - name: Encerrar containers
         if: always()
-        run: docker-compose down
+        run: docker compose down
