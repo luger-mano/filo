@@ -10,7 +10,7 @@ on:
 
 jobs:
   build-test-deploy:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     services:
       mysql:
