@@ -17,7 +17,7 @@ import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
+@DataJpaTest
 @ActiveProfiles("test")
 class UserRepositoryTest {
 
@@ -29,7 +29,6 @@ class UserRepositoryTest {
 
 
     @Test
-    @Transactional
     @DisplayName("Should return an email existing from DB h2.")
     void existsByEmailCase1() {
         String email = "germanoluc890@gmail.com";
@@ -49,7 +48,6 @@ class UserRepositoryTest {
     }
 
     @Test
-    @Transactional
     @DisplayName("Should not return an email existing from DB h2.")
     void existsByEmailCase2() {
         String email = "germanoluc890@gmail.com";
