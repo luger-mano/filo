@@ -14,7 +14,7 @@ jobs:
 
     services:
       mysql:
-        image: mysql:9.2.0
+        image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: steve3571
           MYSQL_DATABASE: retalho_db
@@ -37,6 +37,16 @@ jobs:
 
       - name: Rodar testes com Maven
         run: mvn clean verify
+        working-directory: ./Back-End/ba
+
+      - name: Build e run da imagem Docker com Docker compose
+        env:
+          SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/retalho_db?useSSL=false
+          SPRING_DATASOURCE_USERNAME: root
+          SPRING_DATASOURCE_PASSWORD: steve3571
+          SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: update
+          SPRING_JPA_PROPERTIES_HIBERNATE_TYPE_PREFERRED_UUID_JDBC_TYPE: CHAR
+        run: docker compose up -d
         working-directory: ./Back-End/ba
 
       - name: Build da imagem Docker

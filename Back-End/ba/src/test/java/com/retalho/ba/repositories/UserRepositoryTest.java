@@ -7,7 +7,9 @@ import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,33 +20,34 @@ import java.util.UUID;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-@ActiveProfiles("test")
 class UserRepositoryTest {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    EntityManager entityManager;
+    private TestEntityManager entityManager;
 
 
     @Test
     @DisplayName("Should return an email existing from DB h2.")
     void existsByEmailCase1() {
         String email = "germanoluc890@gmail.com";
-        UserRequestDTO data = new UserRequestDTO(UUID.randomUUID(),"Lucas",
-                "Germano",
-                email,
-                "Steve3571",
-                "527.253.208-28",
-                "(11) 97130-2771",
-                LocalDate.of(2004, 6, 10),
-                UserType.ARTIST);
+        User user = new User();
+                user.setName("Lucas");
+                user.setMiddleName("Germano");
+                user.setEmail(email);
+                user.setPassword("Steve3571");
+                user.setCpf("527.253.208-28");
+                user.setPhone("(11) 97130-2771");
+                user.setBirth(LocalDate.of(2004, 6, 10));
+                user.setUserType(UserType.ARTIST);
 
-        this.createUser(data);
+        entityManager.persistAndFlush(user);
+
         Boolean result = this.userRepository.existsByEmail(email);
 
-        assertThat(result == true).isTrue();
+        assertThat(result).isTrue();
     }
 
     @Test
@@ -54,12 +57,6 @@ class UserRepositoryTest {
 
         Boolean result = this.userRepository.existsByEmail(email);
 
-        assertThat(result == false).isTrue();
-    }
-
-
-    private void createUser(UserRequestDTO data) {
-        User user = new User(data);
-        this.entityManager.persist(user);
+        assertThat(result).isFalse();
     }
 }

@@ -19,7 +19,7 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "table_users")
+@Table(name = "TABLE_USERS")
 public class User implements Serializable {
 
     @Serial
