@@ -1,7 +1,7 @@
 package com.retalho.ba.DTO.users;
 
-import com.retalho.ba.models.User;
-import com.retalho.ba.models.UserType;
+import com.retalho.ba.domain.user.User;
+import com.retalho.ba.domain.enums.UserType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

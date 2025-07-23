@@ -1,11 +1,12 @@
-package com.retalho.ba.services;
+package com.retalho.ba.service;
 
 import com.retalho.ba.DTO.users.UserRequestDTO;
 import com.retalho.ba.DTO.users.UserResponseDTO;
-import com.retalho.ba.mappers.UserMapper;
-import com.retalho.ba.models.User;
-import com.retalho.ba.models.UserType;
-import com.retalho.ba.repositories.UserRepository;
+import com.retalho.ba.application.service.UserService;
+import com.retalho.ba.utils.mappers.UserMapper;
+import com.retalho.ba.domain.user.User;
+import com.retalho.ba.domain.enums.UserType;
+import com.retalho.ba.adapters.outbound.repositories.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,20 +14,14 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
-import static javax.management.Query.times;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;

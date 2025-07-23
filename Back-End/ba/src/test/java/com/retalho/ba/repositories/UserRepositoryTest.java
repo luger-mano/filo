@@ -1,21 +1,15 @@
 package com.retalho.ba.repositories;
 
-import com.retalho.ba.DTO.users.UserRequestDTO;
-import com.retalho.ba.models.User;
-import com.retalho.ba.models.UserType;
-import jakarta.persistence.EntityManager;
+import com.retalho.ba.adapters.outbound.repositories.UserRepository;
+import com.retalho.ba.domain.user.User;
+import com.retalho.ba.domain.enums.UserType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

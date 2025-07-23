@@ -1,10 +1,10 @@
-package com.retalho.ba.services;
+package com.retalho.ba.application.service;
 
 import com.retalho.ba.DTO.users.UserRequestDTO;
 import com.retalho.ba.DTO.users.UserResponseDTO;
-import com.retalho.ba.mappers.UserMapper;
-import com.retalho.ba.models.User;
-import com.retalho.ba.repositories.UserRepository;
+import com.retalho.ba.utils.mappers.UserMapper;
+import com.retalho.ba.domain.user.User;
+import com.retalho.ba.adapters.outbound.repositories.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

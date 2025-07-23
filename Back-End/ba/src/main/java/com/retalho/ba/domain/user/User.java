@@ -1,18 +1,17 @@
-package com.retalho.ba.models;
+package com.retalho.ba.domain.user;
 
 
 import com.retalho.ba.DTO.users.UserRequestDTO;
+import com.retalho.ba.domain.enums.UserType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.UUID;
 
 @Entity

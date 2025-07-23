@@ -1,4 +1,4 @@
-package com.retalho.ba.models;
+package com.retalho.ba.domain.enums;
 
 public enum UserType {
     CLIENT,
