@@ -1,4 +1,4 @@
-package com.retalho.ba.DTO.users;
+package com.retalho.ba.adapter.inbound.controller.response;
 
 import com.retalho.ba.domain.user.User;
 import com.retalho.ba.domain.enums.UserType;

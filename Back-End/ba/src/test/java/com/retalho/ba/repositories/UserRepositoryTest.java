@@ -1,6 +1,6 @@
 package com.retalho.ba.repositories;
 
-import com.retalho.ba.adapters.outbound.repositories.UserRepository;
+import com.retalho.ba.adapter.outbound.repositories.UserRepository;
 import com.retalho.ba.domain.user.User;
 import com.retalho.ba.domain.enums.UserType;
 import org.junit.jupiter.api.DisplayName;
@@ -35,7 +35,7 @@ class UserRepositoryTest {
                 user.setCpf("527.253.208-28");
                 user.setPhone("(11) 97130-2771");
                 user.setBirth(LocalDate.of(2004, 6, 10));
-                user.setUserType(UserType.ARTIST);
+                user.setUserType(UserType.ADMIN);
 
         entityManager.persistAndFlush(user);
 

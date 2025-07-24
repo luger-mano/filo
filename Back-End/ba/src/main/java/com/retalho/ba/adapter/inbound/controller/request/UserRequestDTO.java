@@ -1,4 +1,4 @@
-package com.retalho.ba.DTO.users;
+package com.retalho.ba.adapter.inbound.controller.request;
 
 import com.retalho.ba.domain.enums.UserType;
 import lombok.Data;
@@ -17,7 +17,6 @@ public class UserRequestDTO {
     private String cpf;
     private String phone;
     private LocalDate birth;
-    private UserType userType;
 
     public UserRequestDTO(UUID userId,
                           String name,
@@ -36,6 +35,5 @@ public class UserRequestDTO {
         this.cpf = cpf;
         this.phone = phone;
         this.birth = birth;
-        this.userType = userType;
     }
 }
