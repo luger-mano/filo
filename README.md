@@ -25,33 +25,37 @@ O projeto segue a **Arquitetura Hexagonal (Ports and Adapters)**, com foco em se
 
 ### Estrutura de pacotes
 
+## 📁 Estrutura de Diretórios
+
+```plaintext
 src
 └── main
-└── java
-└── com.retalho.ba
-├── adapter
-│ ├── inbound
-│ │ ├── controller # Entrada da aplicação (HTTP)
-│ │ ├── request # DTOs de entrada
-│ │ └── response # DTOs de saída
-│ └── outbound
-│ ├── entities # Entidades persistidas
-│ └── repositories # Interfaces de persistência (JPA, etc.)
-│
-├── domain
-│ ├── enums # Enums da aplicação
-│ ├── ports
-│ │ ├── in # Interfaces que representam casos de uso (entrada)
-│ │ └── out # Interfaces para gateways externos (saída)
-│ ├── usecase # Lógica central da aplicação (casos de uso)
-│ └── user # Modelos e lógica relacionada ao usuário
-│
-├── infrastructure
-│ ├── config # Configurações do projeto (Beans, Security, etc.)
-│ └── exceptions # Tratamento de exceções
-│
-└── utils
-└── mappers # Mapeamentos com MapStruct
+    └── java
+        └── com.retalho.ba
+            ├── adapter
+            │   ├── inbound
+            │   │   ├── controller      # Entrada da aplicação (HTTP)
+            │   │   ├── request         # DTOs de entrada
+            │   │   └── response        # DTOs de saída
+            │   └── outbound
+            │       ├── entities        # Entidades persistidas
+            │       └── repositories    # Interfaces de persistência (JPA, etc.)
+            │
+            ├── domain
+            │   ├── enums               # Enums da aplicação
+            │   ├── ports
+            │   │   ├── in              # Interfaces que representam casos de uso (entrada)
+            │   │   └── out             # Interfaces para gateways externos (saída)
+            │   ├── usecase             # Lógica central da aplicação (casos de uso)
+            │   └── user                # Modelos e lógica relacionada ao usuário
+            │
+            ├── infrastructure
+            │   ├── config              # Configurações do projeto (Beans, Security, etc.)
+            │   └── exceptions          # Tratamento de exceções
+            │
+            └── utils
+                └── mappers             # Mapeamentos com MapStruct
+
 
 
 ---
@@ -70,6 +74,8 @@ src
 
 ```bash
 docker-compose up --build
+```
+
 🔜 Próximos passos
 Desenvolvimento do front-end em Angular
 
